@@ -1,0 +1,42 @@
+version: '3.6'
+services:
+  db-psql:
+    image: postgres:9.6.6
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=george
+      - POSTGRES_DB=sample_db
+      - POSTGRES_PASSWORD=1234
+      - PGDATA=/data
+    volumes:
+      - ./data/pg-data:/data
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  db-mysql:
+    image: mysql:8.0
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=r1234
+      - MYSQL_DATABASE=sample_db
+      - MYSQL_USER=george
+      - MYSQL_PASSWORD=1234
+      - PGDATA=/data
+    volumes:
+      - ./data/mysql-data:/var/lib/mysql
+  db-mongo:
+    image: mongo:3.2.1
+    ports:
+      - 27018:27017
+    volumes:
+      - ./data/mongo-data:/data/db
+  redis:
+    image: redis:5.0.2-alpine3.8
+    ports:
+      - 6379:6379
+    volumes:
+      - ./data/redis-data:/data
