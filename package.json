@@ -1,19 +1,11 @@
 {
   "name": "orm-ftw",
   "version": "0.0.1",
-  "description": "",
+  "description": "A basic and simple orm",
   "main": "src/index.js",
-  "scripts": {
-    "test": "node example/index.js"
+  "directories": {
+    "src": "src"
   },
-  "author": "George <7jagjag@gmail.com>",
-  "license": "MIT",
-  "files": [
-    "src/index.js",
-    "src/sqlhelper/sqlhelper.js",
-    "src/adapters/pg.js",
-    "src/adapters/mongo.js"
-  ],
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.10.0",
@@ -27,5 +19,24 @@
     "mongodb": "^3.1.10",
     "pg": "^7.7.1",
     "prettier": "^1.15.3"
-  }
+  },
+  "scripts": {
+    "test": "node example/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g3org3/orm-ftw.git"
+  },
+  "author": "George <7jagjag@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "src/index.js",
+    "src/sqlhelper/sqlhelper.js",
+    "src/adapters/pg.js",
+    "src/adapters/mongo.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/g3org3/orm-ftw/issues"
+  },
+  "homepage": "https://github.com/g3org3/orm-ftw#readme"
 }
