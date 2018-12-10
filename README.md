@@ -1,4 +1,4 @@
-# orm-ftw
+# 🐙 orm-ftw
 
 A basic and simple orm
 
