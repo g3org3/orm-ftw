@@ -2,8 +2,8 @@ module.exports = {
   default: {
     adapter: 'pg',
     dbconfig: {
-      database: 'example',
-      user: 'root',
+      database: 'sample_db',
+      user: 'george',
       password: '1234',
       port: 5432,
     },
@@ -11,10 +11,14 @@ module.exports = {
   User: {
     adapter: 'mongo',
     dbconfig: {
-      database: 'mydb',
+      database: 'sample_db',
     },
   },
   Shoe: {
     adapter: 'local',
+  },
+  Car: {
+    adapter: 'mysql',
+    dbconfig: {},
   },
 };
