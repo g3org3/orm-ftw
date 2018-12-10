@@ -1,15 +1,22 @@
 const database = {};
 const { keys } = Object;
-module.exports = (dbconfig = {}, name, model) => {
-  const find = async ({ where = {} } = {}) => {
-    if (keys(where).length === 0) return database[model.__table];
-    return database[model.__table].filter(
-      item =>
-        // where: { name: '1', createdAt: 'date' }
-        keys(where)
-          .map(cond => item[cond] === where[cond])
-          .filter(Boolean).length !== 0
-    );
+
+module.exports = (dbconfig, name, model) => {
+  const find = async ({ where = {}, projection = [], limit } = {}) => {
+    return (database[model.__table] || [])
+      .filter(
+        item =>
+          keys(where).length === 0 ||
+          keys(where) // where: { name: '1', createdAt: 'date' }
+            .map(cond => item[cond] === where[cond])
+            .filter(Boolean).length !== 0
+      )
+      .map(item =>
+        keys(item)
+          .filter(prop => projection.length === 0 || projection.indexOf(prop) !== -1)
+          .reduce((_item, prop) => ({ ..._item, [prop]: item[prop] }), {})
+      )
+      .slice(0, limit);
   };
 
   const insert = async ({ payload } = {}) => {
