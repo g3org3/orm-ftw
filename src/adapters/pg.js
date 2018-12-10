@@ -17,5 +17,17 @@ module.exports = (dbconfig = {}, name, model) => {
 
   return {
     find,
+    insert: () => {
+      throw new Error('insert is not implemented yet :(');
+    },
+    upsert: () => {
+      throw new Error('upsert is not implemented yet :(');
+    },
+    update: () => {
+      throw new Error('update is not implemented yet :(');
+    },
+    delete: () => {
+      throw new Error('delete is not implemented yet :(');
+    },
   };
 };

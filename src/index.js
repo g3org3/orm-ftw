@@ -10,10 +10,15 @@ function adapterCreateModel(adapterConfig = {}, name = '', model = {}) {
     console.error('-- Error --');
     throw new Error(`Adapter not found for model: ${name}, check your adapterConfig`);
   }
+  const Model = adapters[adapter](dbconfig, name, model);
 
   return {
-    find: (where = '', options = {}) =>
-      adapters[adapter](dbconfig, name, model).find({ where, ...options }),
+    find: (where, options) => Model.find({ where, ...options }),
+    create: (payload, options) => Model.insert({ payload, ...options }),
+    insert: (payload, options) => Model.insert({ payload, ...options }),
+    upsert: (payload, options) => Model.upsert({ payload, ...options }),
+    update: (where, payload, options) => Model.update({ where, payload, ...options }),
+    delete: (where, options) => Model.delete({ where, ...options }),
   };
 }
 
